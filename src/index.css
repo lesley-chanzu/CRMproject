@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer components{
+    .bg-goodday-primary{
+        @apply bg-[#4F46E5]
+    }
+    .text-goodday-primary {
+    @apply text-[#4F46E5];
+  }
+  .bg-goodday-bg {
+    @apply bg-[#F8FAFC]; /* Background color */
+  }
+
+  /* Custom Navbar */
+  .navbar {
+    @apply bg-white shadow-sm h-14 flex items-center px-6 fixed w-full z-10;
+  }
+
+  /* Sidebar Transition */
+  .sidebar-transition {
+    @apply transition-all duration-300;
+  }
+}
