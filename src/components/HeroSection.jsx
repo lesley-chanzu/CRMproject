@@ -33,7 +33,7 @@ const HeroSection = () => {
           {/* Replace with image/video */}
           <img
             src="https://via.placeholder.com/600x400?text=Hero+Image" // Placeholder
-            alt="GoodDay Work Management Platform VIDEO"
+            alt="GoodDay Work Management Platform PICTURE"
             className="rounded-lg shadow-xl"
           />
         </div>

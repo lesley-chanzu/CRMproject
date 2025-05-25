@@ -106,7 +106,7 @@ const Pricing = () => {
             </p>
         </div>
 
-        <div className='gri d grid-cols-1 md:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {pricingPlans.map((plan) => (
                 <motion.div
                 key={plan.title}

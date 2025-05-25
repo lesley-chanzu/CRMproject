@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 import IntegrationSection from './components/IntegrationSection';
 import CRMsection from './pages/CRMsetion';
+import ContactUs from './components/ContactUs';
 
 function Home() {
     return (
@@ -32,6 +33,7 @@ function App() {
             <Routes>
                 {/* Define your routes here */}
                 <Route path="/" element={<Home />} />
+                <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path='/features/crm' element={<CRMsection />} />
             </Routes>

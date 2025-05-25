@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
-// import Logo from './logo.svg'; // Uncomment and set the correct path if you want to use a logo
+// import Logo from './logo.svg'; 
 import { Menu, Transition } from '@headlessui/react';
-import { Link } from 'react-router-dom'; // Assuming you're using react-router for navigation
+import { Link } from 'react-router-dom'; // using react-router for navigation
 import Pricing from '../pages/Pricing';
 
 const featuresLinks = [
@@ -97,7 +97,7 @@ function Navbar() {
                         <Link to="/blog/" className="text-gray-500 hover:text-gray-700">
                             Blog
                         </Link>
-                        <Link to="/contact-us/" className="text-gray-500 hover:text-gray-700">
+                        <Link to="/contact-us" className="text-gray-500 hover:text-gray-700">
                             Contact Us
                         </Link>
                         <div className="flex items-center space-x-4">

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import {
     AlertSystem
 } from '../components/charts/AlertSystem'
-
+import { EmployeeHeatMap }  from '../components/charts/EmployeeHeatMap'
+import { ProfitLossChart } from '../components/charts/ProfitLossChart'
 
 const CRMsetion = () => {
     const [financialData, setFinancialData] = useState(null);
@@ -33,12 +34,12 @@ const CRMsetion = () => {
     const fetchEmployeeData = async () => {
         // Simulate fetching employee data/ Replace with actual API call
         const mockEmployeeData = [
-           {id:1, name:'Mo Salah', efficiency: 0.8, dailyEfficiency: [0.7, 0.9, 0.6, 0.85, 0.75]},
-              {id:2, name:'Sadio Mane', efficiency: 0.75, dailyEfficiency: [0.6, 0.8, 0.7, 0.9, 0.85]},
+           {id:1, name:'Mo Salah', efficiency: 0.8, dailyEfficiency: [0.7, 0.9, 0.9, 0.85, 0.75]},
+              {id:2, name:'Sadio Mane', efficiency: 0.75, dailyEfficiency: [0.7, 0.8, 0.7, 0.9, 0.85]},
                 {id:3, name:'Virgil Van Dijk', efficiency: 0.9, dailyEfficiency: [0.8, 0.85, 0.95, 0.9, 0.8]},
                 {id:4, name:'Alisson Becker', efficiency: 0.85, dailyEfficiency: [0.75, 0.8, 0.9, 0.85, 0.8]},
-                {id:5, name:'Trent Alexander-Arnold', efficiency: 0.8, dailyEfficiency: [0.7, 0.75, 0.85, 0.8, 0.9]},
-                {id:6, name:'Andrew Robertson', efficiency: 0.78, dailyEfficiency: [0.68, 0.72, 0.75, 0.8, 0.78]},
+                {id:5, name:'Alexander-Arnold', efficiency: 0.8, dailyEfficiency: [0.6, 0.75, 0.85, 0.4, 0.45]},
+                {id:6, name:'Andrew Robertson', efficiency: 0.78, dailyEfficiency: [0.68, 0.52, 0.75, 0.8, 0.58]},
         ];
         setEmployeeData(mockEmployeeData);
         checkForAlerts();
@@ -84,16 +85,17 @@ const CRMsetion = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6'>
             <div className='bg-white p-6 rounded-lg shadow-md'>
                 <h2>Financial Overview</h2>
-                {financialData ? (
-                    <div>
-                        <p>Total Revenue: ${financialData.revenue.reduce((a, b) => a + b, 0)}</p>
-                        <p>Net Profit: ${financialData.netProfit.reduce((a, b) => a + b, 0)}</p>
-                        <p>Expenses: ${financialData.expenses.reduce((a, b) => a + b, 0)}</p>
-                    </div>
-                ) : (
-                    <p>Loading financial data...</p>
-                )}
+                {financialData && <ProfitLossChart data={financialData}/>}
             </div>
+
+            {/* Employee Heatmap productivity */}
+            <div>
+                <div>
+                    <h2>Employee Productivity</h2>
+                    {employeeData.length > 0 && <EmployeeHeatMap data={employeeData} />}
+                </div>
+            </div>
+
         </div>
     </div>
   )
