@@ -6,16 +6,16 @@ import Pricing from '../pages/Pricing';
 
 const featuresLinks = [
     // { name: 'Project Management', href: '/features/project-management', component: ProjectManagement },
-    { name: 'Project Management', href: '/features/project-management' },
-    { name: 'Workload Management', href: '/features/workload-management' },
-    { name: 'Planning', href: '/features/planning' },
-    { name: 'Time Tracking', href: '/features/time-tracking' },
-    { name: 'Knowledge Base', href: '/features/knowledge-base' },
+    // { name: 'Project Management', href: '/features/project-management' },
+    { name: 'Productivity Suite', href: '/features/productivity-suite' },
+    // { name: 'Planning', href: '/features/planning' },
+    // { name: 'Time Tracking', href: '/features/time-tracking' },
+    // { name: 'Knowledge Base', href: '/features/knowledge-base' },
     { name: 'CRM', href: '/features/crm' },
-    { name: 'Reporting', href: '/features/reporting' },
-    { name: 'Collaboration', href: '/features/collaboration' },
-    { name: 'Agile', href: '/features/agile' },
-    { name: 'Integrations', href: '/features/integrations' },
+    // { name: 'Reporting', href: '/features/reporting' },
+    // { name: 'Collaboration', href: '/features/collaboration' },
+    // { name: 'Agile', href: '/features/agile' },
+    // { name: 'Integrations', href: '/features/integrations' },
 ];
 
 function Navbar() {

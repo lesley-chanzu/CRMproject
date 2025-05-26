@@ -9,8 +9,9 @@ import FeaturesSection from './components/FeaturesSection';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 import IntegrationSection from './components/IntegrationSection';
-import CRMsection from './pages/CRMsetion';
+import CRMsection from './pages/CRMsection';
 import ContactUs from './components/ContactUs';
+import ProductivitySuite from './pages/ProductivitySuite';
 
 function Home() {
     return (
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path='/features/crm' element={<CRMsection />} />
+                <Route path='/features/productivity-suite' element={<ProductivitySuite/>}/>
             </Routes>
             <Footer />
         </>
