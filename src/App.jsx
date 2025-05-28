@@ -12,6 +12,7 @@ import IntegrationSection from './components/IntegrationSection';
 import CRMsection from './pages/CRMsection';
 import ContactUs from './components/ContactUs';
 import ProductivitySuite from './pages/ProductivitySuite';
+import WhyGoodDay from './pages/WhyGoodDay';
 
 function Home() {
     return (
@@ -34,6 +35,7 @@ function App() {
             <Routes>
                 {/* Define your routes here */}
                 <Route path="/" element={<Home />} />
+                <Route path='/why-goodday/' element={<WhyGoodDay />}/>
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path='/features/crm' element={<CRMsection />} />
