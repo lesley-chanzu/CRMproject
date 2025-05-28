@@ -178,7 +178,7 @@ const ProductivitySuite = () => {
               className='border rounded p-2 w-full'
               placeholder='Enter new task...'
             />
-            <button className='bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700'>
+            <button className='bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700'>
               Add Task
             </button>
           </div>
