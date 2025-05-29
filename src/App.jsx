@@ -13,6 +13,7 @@ import CRMsection from './pages/CRMsection';
 import ContactUs from './components/ContactUs';
 import ProductivitySuite from './pages/ProductivitySuite';
 import WhyGoodDay from './pages/WhyGoodDay';
+import Login from './components/Login';
 
 function Home() {
     return (
@@ -38,6 +39,7 @@ function App() {
                 <Route path='/why-goodday/' element={<WhyGoodDay />}/>
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/pricing" element={<Pricing />} />
+                <Route path='/login/' element={<Login />}/>
                 <Route path='/features/crm' element={<CRMsection />} />
                 <Route path='/features/productivity-suite' element={<ProductivitySuite/>}/>
             </Routes>
