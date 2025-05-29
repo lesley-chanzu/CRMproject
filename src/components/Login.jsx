@@ -23,7 +23,7 @@ const Login = () => {
 
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 to-purple-900 px-4'>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 to-purple-900 px-4 pt-24 pb-11'>
         <motion.div
          className='bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md'
             initial={{ opacity: 0, y: 50 }}
@@ -114,10 +114,43 @@ const Login = () => {
                     <label
                     htmlFor='remember'
                     className='text-sm text-gray-700 cursor-pointer'
-                    >Remember Me</label>
+                    >
+                        Remember Me
+                    </label>
                 </div>
 
+                {error && (
+                    <motion.div
+                    className='text-red-500 text-sm mt-2'
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    >
+                        {error}
+                    </motion.div>
+                )}
+
+                <motion.button
+                className='w-full bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-purple-700 transition-colors'
+                type='submit'
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                >
+                    Sign In
+                </motion.button>
+
             </form>
+
+            <p className='text-center text-sm text-gray-500 mt-4'>
+                Don't have an account? 
+                <motion.a
+                href='/register'
+                className='text-purple-600 hover:text-purple-800 font-medium ml-1'
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                >
+                    Sign Up
+                </motion.a>
+                </p>
         </motion.div>
     </div>
   )
