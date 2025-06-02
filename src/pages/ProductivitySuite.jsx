@@ -8,11 +8,15 @@ import {
   XMarkIcon
 } from '@heroicons/react/24/outline';
 import MeetingPlanner from '../modules/MeetingPlanner';
+import EventSchedular from '../modules/EventSchedular';
+import { X } from 'lucide-react';
 
 const ProductivitySuite = () => {
   const [activeModule, setActiveModule] = useState(null);
   const [meetings, setMeetings] = useState([]);
+  const [events, setEvents] = useState([]);
 
+//  function to add or delete meetings 
   const addMeeting = (meeting) => {
     setMeetings(prev => [...prev, meeting]);
   };
@@ -20,6 +24,11 @@ const ProductivitySuite = () => {
   const deleteMeeting = (id) => {
     setMeetings(prev => prev.filter(m => m.id !== id));
   }
+
+//  function to add or delete events
+const addEvent = (event) => {
+  setEvents(prev => [...prev, event]);
+};
 
   const modules = [
     {
@@ -46,7 +55,7 @@ const ProductivitySuite = () => {
               </div>
               <button
               onClick={() => deleteMeeting(m.id)}
-              className='ml-4 px-2 py-1 bg-red-400 text=white rounded-lg hover:bg-red-600 text-xs'
+              className='ml-4 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-600 text-xs'
               >
                 <XMarkIcon className='h-4 w-4'/>
               </button>
@@ -61,42 +70,34 @@ const ProductivitySuite = () => {
       title: 'Event Scheduler',
       icon: <CalendarIcon className='h-8 w-8 text-purple-500' />,
       description: 'Organize and manage events seamlessly with our event scheduler.',
-      content: (
-        <div className='space-y-4'>
-          <h3 className='text-lg font-medium'>Create an Event</h3>
-          <div className='grid grid-cols-2 gap-4'>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Event Name</label>
-              <input
-                type='text'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500'
-                placeholder='Enter event name' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Date</label>
-              <input
-                type='date'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Time</label>
-              <input
-                type='time'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Location</label>
-              <input
-                type='text'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500'
-                placeholder='Enter event location' />
-            </div>
-          </div>
-          <button className='bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700'>
-            Create Event
-          </button>
-        </div>
-      )
+      content: 
+      <>
+      <EventSchedular addEvent={addEvent}/>
+      {/* display events below  */}
+      <div className='mt-4'>
+        <h4 className='font-semibold mb-2'>Scheduled Events</h4>
+        <ul>
+          {events.map(event => (
+            <li
+            key={event.id}
+            className='mb-2 p-2 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center'
+            >
+              <div>
+              <strong>{event.eventName}</strong> - {event.eventDate} at <span className='text-green-800 font-bold'>{event.eventTime}</span>
+              <br />
+              <span className='text-sm text-gray-600'>Location: {event.eventLocation}</span>
+              </div>
+              <button
+              onClick={() => setEvents(prev => prev.filter(e => e.id !== event.id))}
+              className='ml-4 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-600 text-xs'
+              >
+                <XMarkIcon className='h-4 w-4'/>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      </>
     },
     {
       id: 'notes',
