@@ -3,10 +3,10 @@ import { MapIcon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 const ContactUs = () => {
   return (
-   <section className='bg-white py-16 px-4 sm:px-6 lg:px-8'>
+   <section className='bg-purple-300 py-16 px-4 sm:px-6 lg:px-8'>
     <div className='max-w-7xl mx-auto'>
         <div className='text-center mb-12'>
-            <h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl'>Contact Us</h2>
+            <h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl mt-10'>Contact Us</h2>
             <p>If you are in need of any assistance feel free to get in touch with our team.</p>
         </div>
 

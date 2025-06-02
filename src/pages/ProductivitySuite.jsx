@@ -7,9 +7,19 @@ import {
   ListBulletIcon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
+import MeetingPlanner from '../modules/MeetingPlanner';
 
 const ProductivitySuite = () => {
   const [activeModule, setActiveModule] = useState(null);
+  const [meetings, setMeetings] = useState([]);
+
+  const addMeeting = (meeting) => {
+    setMeetings(prev => [...prev, meeting]);
+  };
+
+  const deleteMeeting = (id) => {
+    setMeetings(prev => prev.filter(m => m.id !== id));
+  }
 
   const modules = [
     {
@@ -17,63 +27,34 @@ const ProductivitySuite = () => {
       title: 'Meeting Planner',
       icon: <CalendarIcon className='8 w-8 text-blue-500' />,
       description: 'Schedule and manage meetings efficiently with our intuitive planner.',
-      content: (
-        <div className='space-y-4'>
-          <h3 className='text-lg font-medium'>Schedule a Meeting</h3>
-          <div className='grid grid-cols-2 md:grid-cols-2 gap-4'>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Title</label>
-              <input
-                type='text'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500'
-                placeholder='Enter meeting title' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Date</label>
-              <input
-                type='date'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Time</label>
-              <input
-                type='time'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500' />
-              </div>
+      content: 
+      <>
+      <MeetingPlanner addMeeting={addMeeting} meetings={meetings} deleteMeeting={deleteMeeting}/>
+      {/* display meeting below  */}
+      <div className='mt-4'>
+        <h4 className='font-semibold mb-2'>Sceduled meetings</h4>
+        <ul>
+          {meetings.map(m => (
+            <li
+            key={m.id}
+            className='mb-2 p-2 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center'
+            >
               <div>
-                <label className='block text-sm font-medium text-gray-700 mb-1'>Duration</label>
-                <select className='w-full p-2 border rounded'>
-                  <option value='30'>30 minutes</option>
-                  <option value='60'>1 hour</option>
-                  <option value='90'>1.5 hours</option>
-                  <option value='120'>2 hours</option>
-                </select>
+              <strong>{m.title}</strong> - {m.date} at {m.time}
+              <br />
+              <span className='text-sm text-gray-600'>{m.agenda}</span>
               </div>
-          </div>
-          <div>
-            <label className='block text-sm font-medium text-gray-700 mb-1'>
-              Participants
-            </label>
-            <input 
-            type='text'
-            placeholder='Enter participant emails (comma separated)'
-            className='w-full p-2 border rounded'
-            />
-          </div>
-          <div>
-            <label className='block text-sm font-medium text-gray-700 mb-1'>
-              Agenda
-            </label>
-            <textarea
-            rows={3}
-            className='w-full p-2 border rounded'
-            ></textarea>
-          </div>
-          <button className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700'>
-            Schedule Meeting
-            </button>
-        </div>
-      )
+              <button
+              onClick={() => deleteMeeting(m.id)}
+              className='ml-4 px-2 py-1 bg-red-400 text=white rounded-lg hover:bg-red-600 text-xs'
+              >
+                <XMarkIcon className='h-4 w-4'/>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      </>
     },
     {
       id: 'events',

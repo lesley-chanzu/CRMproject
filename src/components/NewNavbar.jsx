@@ -94,9 +94,9 @@ function Navbar() {
                         <Link to="/customers/" className="text-gray-500 hover:text-gray-700">
                             Customers
                         </Link>
-                        <Link to="/blog/" className="text-gray-500 hover:text-gray-700">
+                        {/* <Link to="/blog/" className="text-gray-500 hover:text-gray-700">
                             Blog
-                        </Link>
+                        </Link> */}
                         <Link to="/contact-us" className="text-gray-500 hover:text-gray-700">
                             Contact Us
                         </Link>
@@ -174,9 +174,9 @@ function Navbar() {
                     <Link to="/customers/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
                         Customers
                     </Link>
-                    <Link to="/blog/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    {/* <Link to="/blog/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
                         Blog
-                    </Link>
+                    </Link> */}
                     <Link to="/contact-us/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
                         Contact Us
                     </Link>
