@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import MeetingPlanner from '../modules/MeetingPlanner';
 import EventSchedular from '../modules/EventSchedular';
-import { X } from 'lucide-react';
+import NoteTaking from '../modules/NoteTaking';
 
 const ProductivitySuite = () => {
   const [activeModule, setActiveModule] = useState(null);
@@ -104,19 +104,7 @@ const addEvent = (event) => {
       title: 'Note Taking',
       icon: <DocumentTextIcon className='h-8 w-8 text-green-500' />,
       description: 'Capture and organize your thoughts with our intuitive note-taking module.',
-      content: (
-        <div className='space-y-4'>
-          <h3 className='text-lg font-medium'>Take a Note</h3>
-          <textarea
-            rows={6}
-            className='w-full p-2 border rounded focus:border-green-500 focus:ring-green-500'
-            placeholder='Write your note here...'
-          ></textarea>
-          <button className='bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700'>
-            Save Note
-          </button>
-        </div>
-      )
+      content: <NoteTaking />
     },
     {
       id: 'files',
