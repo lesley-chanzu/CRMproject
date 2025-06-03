@@ -10,6 +10,7 @@ import {
 import MeetingPlanner from '../modules/MeetingPlanner';
 import EventSchedular from '../modules/EventSchedular';
 import NoteTaking from '../modules/NoteTaking';
+import ReminderSystem from '../modules/ReminderSystem';
 
 const ProductivitySuite = () => {
   const [activeModule, setActiveModule] = useState(null);
@@ -103,7 +104,7 @@ const addEvent = (event) => {
       id: 'notes',
       title: 'Note Taking',
       icon: <DocumentTextIcon className='h-8 w-8 text-green-500' />,
-      description: 'Capture and organize your thoughts with our intuitive note-taking module.',
+      description: 'Capture and organize your thougShts with our intuitive note-taking module.',
       content: <NoteTaking />
     },
     {
@@ -165,35 +166,7 @@ const addEvent = (event) => {
       title: 'Reminder System',
       icon: <ClockIcon className='h-8 w-8 text-orange-500' />,
       description: 'Set reminders for important tasks and deadlines to stay on track.',
-      content: (
-        <div className='space-y-4'>
-          <h3 className='text-lg font-medium'>Set a Reminder</h3>
-          <div className='grid grid-cols-2 gap-4'>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Title</label>
-              <input
-                type='text'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500'
-                placeholder='Enter reminder title' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Date</label>
-              <input
-                type='date'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500' />
-            </div>
-            <div>
-              <label className='block text-sm font-medium text-gray-700 mb-1'>Time</label>
-              <input
-                type='time'
-                className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500' />
-            </div>
-          </div>
-          <button className='bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700'>
-            Set Reminder
-          </button>
-        </div>
-      )
+      content: <ReminderSystem  />
     }
   ];
 
@@ -201,7 +174,7 @@ const addEvent = (event) => {
 
 
   return (
-    <section className='py-16 px-4 sm:px-6 lg:px-8 bg-gray-100'>
+    <section className='py-16 px-4 sm:px-6 lg:px-8 bg-purple-100'>
       <div className='max-w-7xl mx-auto'>
         <div className='text-center mb-12'>
           <h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl'>Productivity Suite</h2>
@@ -237,7 +210,7 @@ const addEvent = (event) => {
           <div className='fixed inset-0 bg-purple-500/50 backdrop-blur-md bg-opacity-50 flex items-center justify-center p-4 z-50'>
             <div className='bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto'>
               <div className='p-6'>
-                <div className='flex jusyify-between items-start mb-6'> 
+                <div className='flex justify-between items-start mb-6'> 
                   <div className='flex items-center'>
                     {modules.find(m => m.id === activeModule)?.icon}
                     <h3 className='text-2xl font-bold ml-3'>
