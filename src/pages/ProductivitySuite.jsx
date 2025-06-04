@@ -12,6 +12,7 @@ import EventSchedular from '../modules/EventSchedular';
 import NoteTaking from '../modules/NoteTaking';
 import ReminderSystem from '../modules/ReminderSystem';
 import TaskManagement from '../modules/TaskManagement';
+import FileManagement from '../modules/FileManagement';
 
 const ProductivitySuite = () => {
   const [activeModule, setActiveModule] = useState(null);
@@ -113,28 +114,7 @@ const ProductivitySuite = () => {
       title: 'File Management',
       icon: <FolderIcon className='h-8 w-8 text-yellow-500' />,
       description: 'Organize and manage your files with our comprehensive file management system.',
-      content: (
-        <div className='space-y-4'>
-          <h3 className='text-lg font-medium'>Manage Files</h3>
-          <div className='flex items-center space-x-4'>
-            <input
-              type='file'
-              className='border rounded p-2'
-            />
-            <button className='bg-yellow-600 text-white px-4 py-2 rounded-md hover:bg-yellow-700'>
-              Upload File
-            </button>
-          </div>
-          <div className='mt-4'>
-            <h4 className='text-md font-medium'>Your Files</h4>
-            <ul className='list-disc pl-5 mt-2'>
-              <li>File1.pdf</li>
-              <li>Document.docx</li>
-              <li>Image.png</li>
-            </ul>
-          </div>
-        </div>
-      )
+      content: <FileManagement />
     },
     {
       id: 'tasks',
