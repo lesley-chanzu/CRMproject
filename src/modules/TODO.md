@@ -13,3 +13,9 @@ FOR THE POP-UP SOUND NOT WORKING
 3. Check your device volume.
 4. Wait for the exact minute (and up to 30 seconds after).
 5. Try the "Test Sound" button.
+
+Starting the building process for task management(TODO List)
+1. A single input box with placeholder
+2. purple button next to it for adding tasks
+3. <p>Your Tasks Below</p>
+4. Should be able to add and delete(Will do editing abit later)

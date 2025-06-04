@@ -11,13 +11,14 @@ import MeetingPlanner from '../modules/MeetingPlanner';
 import EventSchedular from '../modules/EventSchedular';
 import NoteTaking from '../modules/NoteTaking';
 import ReminderSystem from '../modules/ReminderSystem';
+import TaskManagement from '../modules/TaskManagement';
 
 const ProductivitySuite = () => {
   const [activeModule, setActiveModule] = useState(null);
   const [meetings, setMeetings] = useState([]);
   const [events, setEvents] = useState([]);
 
-//  function to add or delete meetings 
+  //  function to add or delete meetings 
   const addMeeting = (meeting) => {
     setMeetings(prev => [...prev, meeting]);
   };
@@ -26,10 +27,10 @@ const ProductivitySuite = () => {
     setMeetings(prev => prev.filter(m => m.id !== id));
   }
 
-//  function to add or delete events
-const addEvent = (event) => {
-  setEvents(prev => [...prev, event]);
-};
+  //  function to add or delete events
+  const addEvent = (event) => {
+    setEvents(prev => [...prev, event]);
+  };
 
   const modules = [
     {
@@ -37,68 +38,68 @@ const addEvent = (event) => {
       title: 'Meeting Planner',
       icon: <CalendarIcon className='8 w-8 text-blue-500' />,
       description: 'Schedule and manage meetings efficiently with our intuitive planner.',
-      content: 
-      <>
-      <MeetingPlanner addMeeting={addMeeting} meetings={meetings} deleteMeeting={deleteMeeting}/>
-      {/* display meeting below  */}
-      <div className='mt-4'>
-        <h4 className='font-semibold mb-2'>Sceduled meetings</h4>
-        <ul>
-          {meetings.map(m => (
-            <li
-            key={m.id}
-            className='mb-2 p-2 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center'
-            >
-              <div>
-              <strong>{m.title}</strong> - {m.date} at {m.time}
-              <br />
-              <span className='text-sm text-gray-600'>{m.agenda}</span>
-              </div>
-              <button
-              onClick={() => deleteMeeting(m.id)}
-              className='ml-4 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-600 text-xs'
-              >
-                <XMarkIcon className='h-4 w-4'/>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      </>
+      content:
+        <>
+          <MeetingPlanner addMeeting={addMeeting} meetings={meetings} deleteMeeting={deleteMeeting} />
+          {/* display meeting below  */}
+          <div className='mt-4'>
+            <h4 className='font-semibold mb-2'>Sceduled meetings</h4>
+            <ul>
+              {meetings.map(m => (
+                <li
+                  key={m.id}
+                  className='mb-2 p-2 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center'
+                >
+                  <div>
+                    <strong>{m.title}</strong> - {m.date} at {m.time}
+                    <br />
+                    <span className='text-sm text-gray-600'>{m.agenda}</span>
+                  </div>
+                  <button
+                    onClick={() => deleteMeeting(m.id)}
+                    className='ml-4 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-600 text-xs'
+                  >
+                    <XMarkIcon className='h-4 w-4' />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
     },
     {
       id: 'events',
       title: 'Event Scheduler',
       icon: <CalendarIcon className='h-8 w-8 text-purple-500' />,
       description: 'Organize and manage events seamlessly with our event scheduler.',
-      content: 
-      <>
-      <EventSchedular addEvent={addEvent}/>
-      {/* display events below  */}
-      <div className='mt-4'>
-        <h4 className='font-semibold mb-2'>Scheduled Events</h4>
-        <ul>
-          {events.map(event => (
-            <li
-            key={event.id}
-            className='mb-2 p-2 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center'
-            >
-              <div>
-              <strong>{event.eventName}</strong> - {event.eventDate} at <span className='text-green-800 font-bold'>{event.eventTime}</span>
-              <br />
-              <span className='text-sm text-gray-600'>Location: {event.eventLocation}</span>
-              </div>
-              <button
-              onClick={() => setEvents(prev => prev.filter(e => e.id !== event.id))}
-              className='ml-4 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-600 text-xs'
-              >
-                <XMarkIcon className='h-4 w-4'/>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      </>
+      content:
+        <>
+          <EventSchedular addEvent={addEvent} />
+          {/* display events below  */}
+          <div className='mt-4'>
+            <h4 className='font-semibold mb-2'>Scheduled Events</h4>
+            <ul>
+              {events.map(event => (
+                <li
+                  key={event.id}
+                  className='mb-2 p-2 border rounded-md bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center'
+                >
+                  <div>
+                    <strong>{event.eventName}</strong> - {event.eventDate} at <span className='text-green-800 font-bold'>{event.eventTime}</span>
+                    <br />
+                    <span className='text-sm text-gray-600'>Location: {event.eventLocation}</span>
+                  </div>
+                  <button
+                    onClick={() => setEvents(prev => prev.filter(e => e.id !== event.id))}
+                    className='ml-4 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-600 text-xs'
+                  >
+                    <XMarkIcon className='h-4 w-4' />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
     },
     {
       id: 'notes',
@@ -140,33 +141,14 @@ const addEvent = (event) => {
       title: 'Task Management',
       icon: <ListBulletIcon className='h-8 w-8 text-red-500' />,
       description: 'Keep track of your tasks and to-dos with our efficient task management module.',
-      content: (
-        <div className='space-y-4'>
-          <h3 className='text-lg font-medium'>Manage Tasks</h3>
-          <div className='flex items-center space-x-4'>
-            <input
-              type='text'
-              className='border rounded p-2 w-full'
-              placeholder='Enter new task...'
-            />
-            <button className='bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700'>
-              Add Task
-            </button>
-          </div>
-          <ul className='list-disc pl-5 mt-2'>
-            <li>Task 1</li>
-            <li>Task 2</li>
-            <li>Task 3</li>
-          </ul>
-        </div>
-      )
+      content: <TaskManagement />
     },
     {
       id: 'reminders',
       title: 'Reminder System',
       icon: <ClockIcon className='h-8 w-8 text-orange-500' />,
       description: 'Set reminders for important tasks and deadlines to stay on track.',
-      content: <ReminderSystem  />
+      content: <ReminderSystem />
     }
   ];
 
@@ -187,8 +169,8 @@ const addEvent = (event) => {
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {modules.map((module) => (
             <div
-            key={module.id}
-            className='bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'
+              key={module.id}
+              className='bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'
             >
               <div className='flex items-center mb-4'>
                 <div className='p-2 rounded-full bg-opacity-10 mr-4'>
@@ -198,8 +180,8 @@ const addEvent = (event) => {
               </div>
               <p className='text-gray-700 mb-6'>{module.description}</p>
               <button
-              onClick={() => setActiveModule(module.id)}
-              className='w-full py-2 px-4 border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-500 hover:ng-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-3 focus:ring-purple-500'
+                onClick={() => setActiveModule(module.id)}
+                className='w-full py-2 px-4 border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-500 hover:ng-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-3 focus:ring-purple-500'
               >Try It Out</button>
             </div>
           ))}
@@ -210,7 +192,7 @@ const addEvent = (event) => {
           <div className='fixed inset-0 bg-purple-500/50 backdrop-blur-md bg-opacity-50 flex items-center justify-center p-4 z-50'>
             <div className='bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto'>
               <div className='p-6'>
-                <div className='flex justify-between items-start mb-6'> 
+                <div className='flex justify-between items-start mb-6'>
                   <div className='flex items-center'>
                     {modules.find(m => m.id === activeModule)?.icon}
                     <h3 className='text-2xl font-bold ml-3'>
@@ -218,8 +200,8 @@ const addEvent = (event) => {
                     </h3>
                   </div>
                   <button
-                  onClick={closeModule}
-                  className='text-gray-400 hover:text-gray-600'
+                    onClick={closeModule}
+                    className='text-gray-400 hover:text-gray-600'
                   >
                     <XMarkIcon className='h06 w-6' />
                   </button>
