@@ -9,7 +9,7 @@ export const AlertSystem = ({alerts}) => {
     };
 
     // Function to get the color based on severity
-    // This function can be customized to return different colors based on severity of the losses being made
+    //This function can be customized to return different colors based on the impact of the losses being made
     const getSeverityColor = (severity) => {
         switch (severity) {
             case 'low' :

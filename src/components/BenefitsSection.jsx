@@ -32,7 +32,7 @@ const BenefitsSection = () => {
 
 
   return (
-    <section className='py-16 bg-gradient-to-tr from-gray-100 to-gray-200'>
+    <section className='py-16 bg-gradient-to-tr from-gray-100 to-purple-200'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
             <h1 className='text-3xl md:text-4xl font-extrabold text-gray-900 mb-12'>Experience a new level of <span className='text-purple-600'>Productivity</span></h1>
             <div>{benefits.map((benefit, index) => (

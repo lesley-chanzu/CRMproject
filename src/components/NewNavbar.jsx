@@ -2,7 +2,6 @@ import React, { useState, Fragment } from "react";
 // import Logo from './logo.svg';
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom"; // using react-router for navigation
-import Pricing from "../pages/Pricing";
 
 const featuresLinks = [
   // { name: 'Project Management', href: '/features/project-management', component: ProjectManagement },
@@ -44,6 +43,7 @@ function Navbar() {
             <Link
               to="/why-goodday/"
               className="text-gray-500 hover:text-gray-700"
+              onClick={() => setIsFeaturesDropdownOpen(false)}
             >
               Why GoodDay
             </Link>
@@ -100,7 +100,9 @@ function Navbar() {
                 </Transition>
               </Menu>
             </div>
-            <Link to="/pricing" className="text-gray-500 hover:text-gray-700">
+            <Link to="/pricing" className="text-gray-500 hover:text-gray-700"
+            onClick={() => setIsFeaturesDropdownOpen(false)}
+            >
               Pricing
             </Link>
             {/* <Link to="/customers/" className="text-gray-500 hover:text-gray-700">
@@ -112,6 +114,7 @@ function Navbar() {
             <Link
               to="/contact-us"
               className="text-gray-500 hover:text-gray-700"
+              onClick={() => setIsFeaturesDropdownOpen(false)}
             >
               Contact Us
             </Link>
@@ -119,12 +122,14 @@ function Navbar() {
               <Link
                 to="/login/"
                 className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={() => setIsFeaturesDropdownOpen(false)}
               >
                 Login
               </Link>
               <Link
                 to="/sign-up/"
                 className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={() => setIsFeaturesDropdownOpen(false)}
               >
                 Get Started
               </Link>
@@ -200,7 +205,10 @@ function Navbar() {
                     key={link.name}
                     to={link.href}
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-                    onClick={() => setIsMobileMenuOpen(false)} 
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsFeaturesDropdownOpen(false);
+                    }}
                   >
                     {link.name}
                   </Link>
@@ -211,7 +219,7 @@ function Navbar() {
           <Link
             to="/pricing/"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-             onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Pricing
           </Link>
@@ -228,7 +236,7 @@ function Navbar() {
           <Link
             to="/contact-us/"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-             onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact Us
           </Link>

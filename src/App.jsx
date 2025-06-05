@@ -14,6 +14,7 @@ import ContactUs from './components/ContactUs';
 import ProductivitySuite from './pages/ProductivitySuite';
 import WhyGoodDay from './pages/WhyGoodDay';
 import Login from './components/Login';
+import GetStarted from './pages/GetStarted';
 
 function Home() {
     return (
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path='/login/' element={<Login />}/>
+                <Route path='sign-up' element={<GetStarted />}/>
                 <Route path='/features/crm' element={<CRMsection />} />
                 <Route path='/features/productivity-suite' element={<ProductivitySuite/>}/>
             </Routes>

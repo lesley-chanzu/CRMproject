@@ -1,4 +1,4 @@
-import { Chart, Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(
@@ -9,7 +9,7 @@ ChartJS.register(
     Title,
     Tooltip,
     Legend
-)
+);
 
 export const ProfitLossChart = ({data}) => {
     // Function to generate the profit and loss chart data
@@ -52,10 +52,17 @@ export const ProfitLossChart = ({data}) => {
             tooltip: {
                 callbacks: {
                     footer: (tooltipItems) => {
-                        const rev = tooltipItems[0].raw;
-                        const exp = tooltipItems[1].raw;
-                        const profit = rev - exp;
-                        return `Profit: ${profit.toLocaleString()}`;
+                        let rev = null;
+                        let exp = null;
+                        tooltipItems.forEach(item => {
+                            if(item.dataset.label === 'Revenue') rev = item.raw;
+                            if(item.dataset.label === 'Expenses') exp = item.raw
+                        });
+                        if(rev !== null && exp !== null) {
+                            const profit = rev -exp;
+                            return `Profit: ${profit.toLocaleString()}`
+                        }
+                        return '';
                     }
                 }
             }
@@ -63,12 +70,13 @@ export const ProfitLossChart = ({data}) => {
         scales: {
             y: {
                 beginAtZero: true,
-                tricks: {
-                    callback: (value) => `$${value.toLocaleString()}`,
+                ticks: {
+                    callback: (value) => `${value.toLocaleString()}`,
                 }
             }
         }
-    }
+    };
+
     return (
         <div className='mt-4'>
             <Line data={chartData} options={options} />

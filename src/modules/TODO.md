@@ -19,3 +19,10 @@ Starting the building process for task management(TODO List)
 2. purple button next to it for adding tasks
 3. <p>Your Tasks Below</p>
 4. Should be able to add and delete(Will do editing abit later)
+
+The get started section of the App 
+1. add animations to it for better looking UI
+2.bg-purple
+
+Adding animations to the other pages
+1. the HeroSection
